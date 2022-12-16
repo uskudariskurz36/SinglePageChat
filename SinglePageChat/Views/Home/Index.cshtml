@@ -1,0 +1,61 @@
+﻿@model List<ChatMessage>
+
+<div class="row mb-3">
+    <div class="col">
+        <h1 class="display-4">Single Page Chat</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-6">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Username 1</label>
+                <input name="username" type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea name="message" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <input name="usercode" type="hidden" value="user1" />
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Username 2</label>
+                <input name="username" type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea name="message" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <input name="usercode" type="hidden" value="user2" />
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Messages</h2>
+        <hr />
+    </div>
+    <div class="col-6 offset-3 mb-3">
+        @foreach (ChatMessage item in Model)
+        {
+            <div class="card mb-3 @(item.IsUser1 ? "" : "text-end")">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Username</h5>
+                    <p class="card-text">@item.Message</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
